@@ -1,0 +1,20 @@
+hub:
+  cookieSecret: "SECRET1"
+proxy:
+  secretToken: "SECRET2"
+singleuser:
+  image:
+    name: henchc/dlab-workshops
+    tag: latest
+  memory:
+      limit: 1G
+      guarantee: 1G
+  storage:
+    capacity: 2Gi
+    storageClass:
+      parameters:
+         type: pd-ssd
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["/bin/sh", "-c", "test -f $HOME/.copied || unzip /srv/app/src/dlab-courses.zip -d $HOME/; touch $HOME/.copied"]

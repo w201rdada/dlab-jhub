@@ -1,3 +1,7 @@
+*.zip
+python-fundamentals/*
+R-Fundamentals/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
