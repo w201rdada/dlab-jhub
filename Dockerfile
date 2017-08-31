@@ -1,6 +1,3 @@
-## To build this container run:
-##    docker build --rm -t henchc/sage .
-
 FROM aculich/rockyter
 
 MAINTAINER Chris Hench <chench@berkeley.edu>
