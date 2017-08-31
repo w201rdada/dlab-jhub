@@ -1,6 +1,7 @@
 *.zip
 python-fundamentals/*
 R-Fundamentals/*
+programming-fundamentals/*
 *config.yaml
 
 # Byte-compiled / optimized / DLL files

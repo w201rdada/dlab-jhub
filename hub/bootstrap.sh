@@ -30,7 +30,12 @@ helm init
 
 # add jhub helm charts
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-helm repo update
+
+# retry until tiller active
+while [ $? -ne 0 ]; do
+    echo "Retrying..."
+    helm repo update
+    sleep 5
 
 # install hub
 helm install jupyterhub/jupyterhub \
