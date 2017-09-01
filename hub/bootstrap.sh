@@ -30,12 +30,14 @@ helm init
 
 # add jhub helm charts
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+helm repo update
 
 # retry until tiller active
 while [ $? -ne 0 ]; do
     echo "Retrying..."
-    helm repo update
     sleep 5
+    helm repo update
+done
 
 # install hub
 helm install jupyterhub/jupyterhub \
@@ -46,15 +48,13 @@ helm install jupyterhub/jupyterhub \
 
 # retry until docker image is fully pulled
 while [ $? -ne 0 ]; do
+    sleep 5
     echo "Retrying..."
     helm install jupyterhub/jupyterhub \
         --version=v0.4 \
         --name=jhub \
         --namespace=dlabhub \
         -f config.yaml
-
-    sleep 5
-
 done
 
 # print pods
