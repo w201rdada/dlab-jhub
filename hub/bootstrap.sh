@@ -24,7 +24,7 @@ gcloud container clusters create dlabhub \
         --machine-type=n1-standard-4 \
         --zone=us-central1-b
 
-# get helm
+# get and init helm
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 helm init
 
@@ -61,4 +61,5 @@ done
 kubectl --namespace=dlabhub get pod
 
 # print IP
+echo "External IP is hub address:"
 kubectl --namespace=dlabhub get svc

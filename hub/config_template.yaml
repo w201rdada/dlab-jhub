@@ -4,7 +4,7 @@ proxy:
   secretToken: "SECRET2"
 singleuser:
   image:
-    name: henchc/dlab-workshops
+    name: DOCKER
     tag: latest
   memory:
       limit: 1G
