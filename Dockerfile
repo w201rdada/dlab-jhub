@@ -2,6 +2,8 @@ FROM aculich/rockyter
 
 MAINTAINER Chris Hench <chench@berkeley.edu>
 
+# Dockerfile for henchc/dlab-workshops
+
 # conda python packages
 RUN conda install --yes \
       nltk \
