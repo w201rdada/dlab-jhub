@@ -60,6 +60,14 @@ done
 # print pods
 kubectl --namespace=dlabhub get pod
 
+# wait until external ip address is established
+kubectl --namespace=dlabhub get svc | grep pending
+while [ $? -ne 1 ]; do
+    echo "IP Pending..."
+    sleep 5
+    kubectl --namespace=dlabhub get svc | grep pending
+done
+
 # print IP
 echo "External IP is hub address:"
 kubectl --namespace=dlabhub get svc
