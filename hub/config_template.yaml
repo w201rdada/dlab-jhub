@@ -4,7 +4,7 @@ proxy:
   secretToken: "SECRET2"
 singleuser:
   image:
-    name: DOCKER
+    name: DOCKER_IMAGE
     tag: latest
   memory:
       limit: 1G
