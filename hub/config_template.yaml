@@ -17,4 +17,4 @@ singleuser:
   lifecycleHooks:
     postStart:
       exec:
-        command: ["/bin/sh", "-c", "test -f $HOME/.copied || unzip /srv/app/src/dlab-courses.zip -d $HOME/; touch $HOME/.copied"]
+        command: ["git clone https://github.com/dlab-berkeley/python-fundamentals.git"]
