@@ -36,9 +36,3 @@ RUN Rscript -e "install.packages('rpart.plot', dependencies = TRUE, repos='http:
     Rscript -e "install.packages('SuperLearner', dependencies = TRUE, repos='http://cran.us.r-project.org')" && \
     Rscript -e "install.packages('topicmodels', dependencies = TRUE, repos='http://cran.us.r-project.org')" && \
     Rscript -e "install.packages('selectr', dependencies = TRUE, repos='http://cran.us.r-project.org')"
-
-# back to root to add course zip file
-USER root
-RUN mkdir -p /srv/app/src
-COPY dlab-courses.zip /srv/app/src
-USER $NB_USER
