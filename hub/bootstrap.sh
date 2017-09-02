@@ -21,7 +21,7 @@ gcloud components install kubectl
 # create cluster
 gcloud container clusters create dlabhub \
         --num-nodes=3 \
-        --machine-type=n1-standard-4 \
+        --machine-type=n1-highmem-2 \
         --zone=us-central1-b
 
 # get and init helm
