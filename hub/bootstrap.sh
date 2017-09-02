@@ -2,7 +2,7 @@
 
 # give docker image as 1st argument if provided
 DOCKER=$1
-DOCKER=${DOCKER:=jupyter/jupyterhub}
+DOCKER=${DOCKER:=""}
 
 # get random secret strings
 CONFIG1=$(cat config_template.yaml)
@@ -69,5 +69,5 @@ while [ $? -ne 1 ]; do
 done
 
 # print IP
-echo "External IP is hub address:"
+echo "External IP of the proxy public is hub address:"
 kubectl --namespace=dlabhub get svc
