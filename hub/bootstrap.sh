@@ -2,7 +2,10 @@
 
 # give docker image as 1st argument if provided
 DOCKER=$1
-DOCKER=${DOCKER:=""}
+DOCKER=${DOCKER:=aculich/rockyter}
+
+GITREPO=$2
+GITREPO=${GITREPO:=https://github.com/dlab-berkeley/python-fundamentals.git}
 
 # get random secret strings
 CONFIG1=$(cat config_template.yaml)
@@ -13,7 +16,8 @@ S2=$(openssl rand -hex 32)
 CONFIG2="${CONFIG1/SECRET1/$S1}"
 CONFIG3="${CONFIG2/SECRET2/$S2}"
 CONFIG4="${CONFIG3/DOCKER_IMAGE/$DOCKER}"
-echo "$CONFIG4" > config.yaml
+CONFIG5="${CONFIG4/REPO/$GITREPO}"
+echo "$CONFIG5" > config.yaml
 
 # install kubectl
 gcloud components install kubectl
