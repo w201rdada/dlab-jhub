@@ -24,6 +24,16 @@ With large docker images it will timeout and retry a few times. At the very end 
 
 ---
 
+To zip up and download any content, all users can open a new terminal and tar the folder:
+
+```bash
+tar -czvf my_files.tar <FOLDER TO TAR>
+```
+
+Then back in the file browser you can check the box next to the file and click download.
+
+---
+
 To resize the hub at any point:
 
 ```bash
@@ -34,3 +44,16 @@ gcloud container clusters resize \
 ```
 
 This should not disturb users.
+
+---
+
+To delete and restart a pod, first check the pods that are running:
+
+```bash
+kubectl get pods --namespace dlabhub
+```
+Then delete the problematic pod:
+
+```bash
+kubectl delete pod <PODNAME> --namespace dlabhub
+```
