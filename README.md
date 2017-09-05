@@ -28,7 +28,7 @@ To resize the hub at any point:
 
 ```bash
 gcloud container clusters resize \
-             sagecampus \
+             dlabhub \
              --size <NEW-SIZE> \
              --zone us-central1-b
 ```
