@@ -21,3 +21,16 @@ bash bootstrap.sh <DOCKER IMAGE> <GITHUB REPO>
 ```
 
 With large docker images it will timeout and retry a few times. At the very end it will yield the public IP address for the hub.
+
+---
+
+To resize the hub at any point:
+
+```bash
+gcloud container clusters resize \
+             sagecampus \
+             --size <NEW-SIZE> \
+             --zone us-central1-b
+```
+
+This should not disturb users.
