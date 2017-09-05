@@ -24,6 +24,14 @@ With large docker images it will timeout and retry a few times. At the very end 
 
 ---
 
+Running `bootstrap.sh` will give you an IP address at the end for your hub. If you somehow lose it, you can print it again by running:
+
+```bash
+kubectl --namespace=dlabhub get svc
+```
+
+---
+
 To zip up and download any content, all users can open a new terminal and tar the folder:
 
 ```bash
