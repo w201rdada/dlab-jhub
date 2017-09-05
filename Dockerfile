@@ -38,3 +38,6 @@ RUN Rscript -e "install.packages('rpart.plot', dependencies = TRUE, repos='http:
     Rscript -e "install.packages('SuperLearner', dependencies = TRUE, repos='http://cran.us.r-project.org')" && \
     Rscript -e "install.packages('topicmodels', dependencies = TRUE, repos='http://cran.us.r-project.org')" && \
     Rscript -e "install.packages('selectr', dependencies = TRUE, repos='http://cran.us.r-project.org')"
+
+# pip install more python
+RUN pip install pylangacq
