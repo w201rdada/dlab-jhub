@@ -14,10 +14,10 @@ Then run the bootstrap script.
 cd dlab-jhub/hub && bash bootstrap.sh
 ```
 
-The default will use `aculich/rockyter` for a docker image and D-Lab's [Python Fundamentals](https://github.com/dlab-berkeley/programming-fundamentals) GitHub repo. But you can also give the shell script arguments, the first argument is the dockerhub image and the second argument being the GitHub repo.
+The default will use `aculich/rockyter` for a docker image and D-Lab's [Python Fundamentals](https://github.com/dlab-berkeley/programming-fundamentals) GitHub repo, and set up a cluster with 3 nodes using [machine type](https://cloud.google.com/compute/docs/machine-types) `n1-highmem-2` (2 CPUs + 13GB memory + 16 PDs). But you can also give the shell script arguments, the first argument is the dockerhub image, the second argument the GitHub repo, and the third argument the number of nodes.
 
 ```bash
-bash bootstrap.sh <DOCKER IMAGE> <GITHUB REPO>
+bash bootstrap.sh <DOCKER IMAGE> <GITHUB REPO> <NUM_NODES>
 ```
 
 With large docker images it will timeout and retry a few times. At the very end it will yield the public IP address for the hub.

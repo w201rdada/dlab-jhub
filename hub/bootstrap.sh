@@ -7,6 +7,9 @@ DOCKER=${DOCKER:=aculich/rockyter}
 GITREPO=$2
 GITREPO=${GITREPO:=https://github.com/dlab-berkeley/python-fundamentals.git}
 
+NODES=$3
+NODES=${NODES:=3}
+
 # get random secret strings
 CONFIG1=$(cat config_template.yaml)
 S1=$(openssl rand -hex 32)
@@ -24,7 +27,7 @@ gcloud components install kubectl
 
 # create cluster
 gcloud container clusters create dlabhub \
-        --num-nodes=3 \
+        --num-nodes=$NODES \
         --machine-type=n1-highmem-2 \
         --zone=us-central1-b
 
@@ -73,5 +76,6 @@ while [ $? -ne 1 ]; do
 done
 
 # print IP
-echo "External IP of the proxy public is hub address:"
-kubectl --namespace=dlabhub get svc
+echo ""
+echo "Your JupyterHub can be accessed at:"
+kubectl --namespace=dlabhub get svc | tail -1 | awk '{ print $3; }'
