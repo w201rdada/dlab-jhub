@@ -2,7 +2,7 @@
 
 # give docker image as 1st argument if provided
 DOCKER=$1
-DOCKER=${DOCKER:=aculich/rockyter}
+DOCKER=${DOCKER:=henchc/rockyter2}
 
 GITREPO=$2
 GITREPO=${GITREPO:=https://github.com/dlab-berkeley/python-fundamentals.git}
@@ -48,7 +48,7 @@ done
 
 # install hub
 helm install jupyterhub/jupyterhub \
-    --version=v0.4 \
+    --version=0.5.0-fc53f60 \
     --name=jhub \
     --namespace=dlabhub \
     -f config.yaml
@@ -58,7 +58,7 @@ while [ $? -ne 0 ]; do
     sleep 5
     echo "Retrying..."
     helm install jupyterhub/jupyterhub \
-        --version=v0.4 \
+        --version=0.5.0-fc53f60 \
         --name=jhub \
         --namespace=dlabhub \
         -f config.yaml
