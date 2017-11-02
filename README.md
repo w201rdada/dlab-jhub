@@ -2,8 +2,11 @@
 
 Copping dlab's jam for use in mids...
 
+From Cloud Console:
+
 ```bash
-bash brootstrap.sh gcr.io/f17w201rdada/portfolio https://github.com/w201rdada/portfolio.git 1 fa17
+git clone https://github.com/w201rdada/dlab-jhub
+bash bootstrap.sh gcr.io/f17w201rdada/portfolio https://github.com/w201rdada/portfolio 1 fa17
 ```
 
 <hr>
