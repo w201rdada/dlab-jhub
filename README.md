@@ -1,5 +1,13 @@
 # dlab-jhub
 
+Copping dlab's jam for use in mids...
+
+```bash
+bash brootstrap.sh gcr.io/f17w201rdada/portfolio https://github.com/w201rdada/portfolio.git 1 fa17
+```
+
+<hr>
+
 Current configuration and bootstrap script for UC Berkeley's D-Lab's JupyterHub for instruction.
 
 In Google Cloud Shell, after enabling the Compute Engine, Container Engine, and Container Registry APIs, clone in the bootstrap repo:
