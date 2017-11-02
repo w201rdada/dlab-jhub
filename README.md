@@ -5,7 +5,7 @@ Copping dlab's jam for use in mids...
 From Cloud Console:
 
 ```bash
-git clone https://github.com/w201rdada/dlab-jhub
+git clone https://github.com/w201rdada/dlab-jhub && cd dlab-jhub/hub
 bash bootstrap.sh gcr.io/f17w201rdada/portfolio https://github.com/w201rdada/portfolio 1 fa17
 ```
 
