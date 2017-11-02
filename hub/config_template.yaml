@@ -5,7 +5,7 @@ proxy:
 singleuser:
   image:
     name: DOCKER_IMAGE
-    tag: latest
+    tag: TAG
   memory:
       limit: 1G
       guarantee: 1G
