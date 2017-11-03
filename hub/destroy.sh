@@ -1,8 +1,8 @@
 # delete namespace
-kubectl delete namespace dlabhub
+kubectl delete namespace portfolio
 
 # destroy cluster
-gcloud container clusters delete dlabhub --zone=us-central1-b
+gcloud container clusters delete portfolio --zone=us-central1-b
 
 # check gone
 gcloud container clusters list
