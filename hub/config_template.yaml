@@ -14,7 +14,3 @@ singleuser:
     storageClass:
       parameters:
          type: pd-ssd
-  lifecycleHooks:
-    postStart:
-      exec:
-        command: ["git", "clone", "REPO"]

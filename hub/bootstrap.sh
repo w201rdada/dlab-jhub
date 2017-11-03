@@ -2,16 +2,16 @@
 
 # give docker image as 1st argument if provided
 DOCKER=$1
-DOCKER=${DOCKER:=henchc/rockyter2}
+DOCKER=${DOCKER:=w201rdada/repfolio}
 
-GITREPO=$2
-GITREPO=${GITREPO:=https://github.com/dlab-berkeley/python-fundamentals.git}
+NODES=$2
+NODES=${NODES:=1}
 
-NODES=$3
-NODES=${NODES:=3}
+TG=$3
+TG=${TG:=fa17}
 
-TG=$4
-TG=${TG:=latest}
+EMAIL=$4
+EMAIL=${EMAIL:=brooksambrose@gmail.com}
 
 # get random secret strings
 CONFIG1=$(cat config_template.yaml)
@@ -23,8 +23,7 @@ CONFIG2="${CONFIG1/SECRET1/$S1}"
 CONFIG3="${CONFIG2/SECRET2/$S2}"
 CONFIG4="${CONFIG3/DOCKER_IMAGE/$DOCKER}"
 CONFIG5="${CONFIG4/TAG/$TG}"
-CONFIG6="${CONFIG5/REPO/$GITREPO}"
-echo "$CONFIG6" > config.yaml
+echo "$CONFIG5" > config.yaml
 
 # install kubectl
 gcloud components install kubectl
@@ -35,9 +34,14 @@ gcloud container clusters create portfolio \
         --machine-type=n1-highmem-2 \
         --zone=us-central1-b
 
+# 6. Give your account super-user permissions, allowing you to perform all the actions needed to set up JupyterHub.
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$EMAIL
+
 # get and init helm
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
-helm init
+kubectl --namespace kube-system create sa tiller
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller
 
 # add jhub helm charts
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -52,7 +56,7 @@ done
 
 # install hub
 helm install jupyterhub/jupyterhub \
-    --version=0.5.0-fc53f60 \
+    --version=v0.4 \
     --name=jhub \
     --namespace=portfolio \
     -f config.yaml
@@ -62,7 +66,7 @@ while [ $? -ne 0 ]; do
     sleep 5
     echo "Retrying..."
     helm install jupyterhub/jupyterhub \
-        --version=0.5.0-fc53f60 \
+        --version=v0.4 \
         --name=jhub \
         --namespace=portfolio \
         -f config.yaml
@@ -82,4 +86,4 @@ done
 # print IP
 echo ""
 echo "Your JupyterHub can be accessed at:"
-kubectl --namespace=portfolio get svc | tail -1 | awk '{ print $3; }'
+kubectl --namespace=portfolio get svc | tail -1 | awk '{ print $4; }'
